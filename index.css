@@ -41,7 +41,8 @@ p {
 }
 
 .header__container {
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -128,7 +129,8 @@ p {
 }
 
 .products__container {
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -238,7 +240,8 @@ p {
 }
 
 .services__container {
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -393,4 +396,176 @@ p {
 .modal__link:hover {
     background-color: #1a5fd4;
     transition: background-color 0.2s ease-in;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+.header__hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    align-self: center;
+    flex-shrink: 0;
+}
+
+.header__hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #111111;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.header__hamburger.is-open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.header__hamburger.is-open span:nth-child(2) {
+    opacity: 0;
+}
+
+.header__hamburger.is-open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Tablet */
+@media (max-width: 1240px) {
+    .header__container,
+    .products__container,
+    .services__container {
+        padding: 0 24px;
+        box-sizing: border-box;
+    }
+}
+
+@media (max-width: 1024px) {
+    .main__title {
+        font-size: 42px;
+    }
+
+    .main__subtitle__text {
+        font-size: 26px;
+    }
+
+    .products__container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 32px;
+    }
+
+    .products__heading {
+        flex: none;
+        font-size: 22px;
+    }
+
+    .products__card-title {
+        font-size: 30px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .header__hamburger {
+        display: flex;
+    }
+
+    .header__nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: #ffffff;
+        border-bottom: 1px solid lightgray;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        padding: 8px 0 16px;
+    }
+
+    .header__nav.is-open {
+        display: flex;
+    }
+
+    .header__nav__item {
+        margin: 4px 24px;
+        font-size: 16px;
+    }
+
+    .main__info {
+        left: 0;
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .main__title {
+        font-size: 34px;
+    }
+
+    .main__subtitle__text {
+        font-size: 20px;
+    }
+
+    .products__card-content {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .products__card-meta {
+        flex: none;
+    }
+
+    .products__card {
+        padding: 24px;
+    }
+
+    .products__title,
+    .services__title {
+        font-size: 34px;
+    }
+
+    .services__description {
+        font-size: 16px;
+    }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+    .main__info {
+        top: 12%;
+    }
+
+    .main__title {
+        font-size: 26px;
+    }
+
+    .main__subtitle__text {
+        font-size: 17px;
+    }
+
+    .products__title,
+    .services__title {
+        font-size: 26px;
+    }
+
+    .products__card {
+        padding: 16px;
+    }
+
+    .services__item {
+        padding: 16px 20px;
+    }
+
+    .products__card-button {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
 }

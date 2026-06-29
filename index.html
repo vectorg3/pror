@@ -22,6 +22,11 @@
                 <a class="header__nav__item" href="#" id="openModalNav">Написать нам</a>
                 <a class="header__nav__item" href="#about">О компании</a>
             </nav>
+            <button class="header__hamburger" id="hamburgerBtn" aria-label="Открыть меню" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
     <main class="main" id="main">
@@ -147,6 +152,31 @@
         const closeModal = () => { modal.hidden = true; };
 
         document.getElementById('logoLink').addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const headerNav = document.querySelector('.header__nav');
+
+        const closeHamburger = () => {
+            headerNav.classList.remove('is-open');
+            hamburgerBtn.classList.remove('is-open');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+        };
+
+        hamburgerBtn.addEventListener('click', () => {
+            const isOpen = headerNav.classList.toggle('is-open');
+            hamburgerBtn.classList.toggle('is-open', isOpen);
+            hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+        });
+
+        document.querySelectorAll('.header__nav__item').forEach(link => {
+            link.addEventListener('click', closeHamburger);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!headerNav.contains(e.target) && !hamburgerBtn.contains(e.target)) {
+                closeHamburger();
+            }
+        });
 
         openBtn.addEventListener('click', openModal);
         document.getElementById('openModalNav').addEventListener('click', (e) => { e.preventDefault(); openModal(); });
