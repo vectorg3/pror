@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <title>Главная</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__container flex flex-justify-between">
+            <a href="#" id="logoLink"><img class="header__logo" src="assets/logo.png" style="margin-right: 30px" alt="" width="74" height="80"></a>
+            <nav class="header__nav flex flex-align-center">
+                <a class="header__nav__item" href="#products">Продукты</a>
+                <a class="header__nav__item" href="#services">Услуги</a>
+                <a class="header__nav__item" href="#search">Поиск</a>
+                <a class="header__nav__item" href="#" id="openModalNav">Написать нам</a>
+                <a class="header__nav__item" href="#about">О компании</a>
+            </nav>
+        </div>
+    </header>
+    <main class="main" id="main">
+        <div class="main__container">
+            <div class="main__info">
+                <div class="main__title">
+                    <span class="main__title__text">Защищаем технологические системы.</span>
+                    <br>
+                    <span class="main__title__text">Надежно!</span>
+                </div>
+                <div class="main__subtitle">
+                    <span class="main__subtitle__text">
+                        Создаем программные продукты и оказываем услуги по защите информационных и управляющих систем на энергетических предприятиях
+                    </span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <section class="products" id="products">
+        <h2 class="products__title">Наши продукты</h2>
+        <div class="products__container">
+            <p class="products__heading">Разрабатываем программное обеспечение для защиты информации в технических системах</p>
+            <article class="products__card">
+                <div class="products__card-content">
+                    <div class="products__card-meta">
+                        <h2 class="products__card-title">ПРО.ДУ</h2>
+                        <p class="products__card-description">Реализация автоматизированного безопасного дистанционного управления диспетчерского центра</p>
+                    </div>
+                    <div class="products__card-functions">
+                        <h3 class="products__card-functions-heading">Функции:</h3>
+                        <ol class="products__card-functions-list">
+                            <li class="products__card-functions-item">Подтверждение выполнения одиночной команды дистанционного управления (ДУ), отданной диспетчером центра управления сетями (ЦУС)</li>
+                            <li class="products__card-functions-item">Подтверждение выполнения очереди команд ДУ в рамках выполнения бланка или программы переключений по заданию диспетчера ЦУС</li>
+                            <li class="products__card-functions-item">Подтверждение задания на ввод графиков временного отключения (ГВО)&nbsp;/ графиков аварийного отключения (ГАО) из Автоматизированной системы управления (АСТУ) ЦУС электронной подписью (ЭП) диспетчера ЦУС</li>
+                            <li class="products__card-functions-item">Подтверждение задания на ввод ГВО/ГАО из Автоматизированной системы диспетчерского управления (АСДУ) электронной подписью (ЭП) диспетчера АО «СО ЕЭС»</li>
+                            <li class="products__card-functions-item">Аутентификация и авторизация персонала для подтверждения команд ДУ</li>
+                            <li class="products__card-functions-item">Криптографическое подтверждение команды ДУ и программы/бланка переключений ЭП диспетчера ЦУС</li>
+                        </ol>
+                    </div>
+                </div>
+                <footer class="products__card-footer">
+                    <button class="products__card-button" id="openModal">Узнать стоимость решения</button>
+                </footer>
+            </article>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="services__container">
+            <h2 class="services__title">Услуги</h2>
+            <p class="services__description">Мы занимаемся анализом существующих и созданием новых средств защиты информации технологических систем объектов критической информационной инфраструктуры, созданию безопасного программного обеспечения.</p>
+            <div class="services__list">
+
+                <details class="services__item">
+                    <summary class="services__item-title">Техническое и консультационное сопровождение процессов безопасной разработки и тестирования безопасности программного обеспечения.</summary>
+                    <ul class="services__item-list">
+                        <li class="services__item-list-item">Оценка процессов безопасной разработки программного обеспечения с целью контроля соответствия требованиям нормативных документов;</li>
+                        <li class="services__item-list-item">Разработка рекомендаций по обеспечению соответствия обязательным требованиям нормативных документов при разработке и поставке прикладного программного обеспечения на объекты КИИ и ЗО КИИ;</li>
+                        <li class="services__item-list-item">Оценка эффективности действующих процессов безопасной разработки ПО и разработка мер по их совершенствованию;</li>
+                        <li class="services__item-list-item">Анализ соответствия процессов безопасной разработки программного обеспечения действующему законодательству Российской Федерации в области информационной безопасности, в том числе требованиям ГОСТ Р 56939-2024, ГОСТ Р 71207-2024, ГОСТ Р 58412-2019 и иных нормативных документов;</li>
+                        <li class="services__item-list-item">Разработка и актуализация по запросу Заказчика обязательной документации по безопасной разработке программного обеспечения в соответствии с требованиями нормативных документов (руководство по безопасной разработке, модель угроз, описание архитектуры, процедуры управления уязвимостями и иная документация);</li>
+                        <li class="services__item-list-item">Исследование потенциальных уязвимостей в разрабатываемом программном обеспечении;</li>
+                        <li class="services__item-list-item">Подготовка ответов на запросы контрагентов Заказчика и органов надзора по вопросам безопасной разработки программного обеспечения;</li>
+                        <li class="services__item-list-item">Разработка по запросу Заказчика методических материалов, инструкций и руководств по вопросам безопасной разработки программного обеспечения;</li>
+                        <li class="services__item-list-item">Контроль соответствия процессов разработки и развертывания программного обеспечения требованиям информационной безопасности;</li>
+                        <li class="services__item-list-item">Проведение функционального тестирования безопасности программного обеспечения;</li>
+                        <li class="services__item-list-item">Проведение тестирования на уязвимости (в том числе статический анализ исходного кода, динамический анализ, фаззинг-тестирование);</li>
+                        <li class="services__item-list-item">Проверка соответствия разрабатываемого программного обеспечения требованиям информационной безопасности;</li>
+                        <li class="services__item-list-item">Подготовка детальных отчётов и экспертных заключений по результатам проведённого тестирования безопасности;</li>
+                        <li class="services__item-list-item">Разработка рекомендаций по устранению выявленных недостатков и уязвимостей.</li>
+                    </ul>
+                </details>
+
+                <details class="services__item">
+                    <summary class="services__item-title">Консультационное сопровождение по вопросам информационной безопасности.</summary>
+                    <ul class="services__item-list">
+                        <li class="services__item-list-item">Анализ, коррекция и согласование требований информационной безопасности в договорных материалах, технических заданиях и запросах контрагентов Заказчика;</li>
+                        <li class="services__item-list-item">Подготовка проектов запросов и ответов на вопросы информационной безопасности, направляемых контрагентам Заказчика, органам государственной власти, регуляторам и надзорным органам;</li>
+                        <li class="services__item-list-item">Консультационное сопровождение процессов согласования требований информационной безопасности с третьими лицами, включая контрагентов Заказчика;</li>
+                        <li class="services__item-list-item">Консультирование по вопросам соответствия требованиям информационной безопасности при взаимодействии с органами государственной власти, ФСТЭК России, ФСБ России и иными надзорными органами;</li>
+                        <li class="services__item-list-item">Подготовка технической документации по результатам экспертного анализа требований информационной безопасности контрагентов Заказчика.</li>
+                    </ul>
+                </details>
+
+                <details class="services__item">
+                    <summary class="services__item-title">Обслуживание и администрирование сертифицированных и аттестованных средств криптографической защиты информации (СКЗИ).</summary>
+                    <ul class="services__item-list">
+                        <li class="services__item-list-item">Техническое обслуживание сертифицированных и аттестованных СКЗИ (криптошлюзы, удостоверяющие центры, сертификационные центры и прочее криптографическое оборудование);</li>
+                        <li class="services__item-list-item">Поддержка функционирования СКЗИ и обеспечение их надлежащей работоспособности;</li>
+                        <li class="services__item-list-item">Проведение профилактических работ, обновлений и модернизации СКЗИ;</li>
+                        <li class="services__item-list-item">Разрешение технических проблем, инцидентов и нештатных ситуаций, связанных с криптографическим оборудованием;</li>
+                        <li class="services__item-list-item">Ведение документации по обслуживанию и техническому состоянию СКЗИ;</li>
+                        <li class="services__item-list-item">Обслуживание защищённых с использованием СКЗИ информационных и телекоммуникационных систем в соответствии с технической и эксплуатационной документацией;</li>
+                        <li class="services__item-list-item">Консультационное сопровождение по вопросам применения сертифицированных СКЗИ в прикладном программном обеспечении;</li>
+                        <li class="services__item-list-item">Консультирование по выбору и интеграции криптографических компонентов в прикладное программное обеспечение;</li>
+                        <li class="services__item-list-item">Подготовка технической документации по использованию СКЗИ в разрабатываемом программном обеспечении;</li>
+                        <li class="services__item-list-item">Проведение тестирования криптографических компонентов и модулей программного обеспечения;</li>
+                        <li class="services__item-list-item">Разработка рекомендаций по обеспечению безопасности применения СКЗИ в ПО и защиты криптографических ключей.</li>
+                    </ul>
+                </details>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+        <div class="modal__overlay" id="modalOverlay"></div>
+        <div class="modal__window">
+            <button class="modal__close" id="closeModal" aria-label="Закрыть">&times;</button>
+            <h2 class="modal__title" id="modalTitle">Свяжитесь с нами</h2>
+            <p class="modal__text">Напишите нам, и мы расскажем о стоимости и условиях внедрения решения.</p>
+            <a class="modal__link" href="mailto:info@pror.ru">Написать на почту</a>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('modal');
+        const openBtn = document.getElementById('openModal');
+        const closeBtn = document.getElementById('closeModal');
+        const overlay = document.getElementById('modalOverlay');
+
+        const openModal = () => { modal.hidden = false; };
+        const closeModal = () => { modal.hidden = true; };
+
+        document.getElementById('logoLink').addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+        openBtn.addEventListener('click', openModal);
+        document.getElementById('openModalNav').addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', closeModal);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+        document.querySelectorAll('.services__item').forEach(details => {
+            const summary = details.querySelector('.services__item-title');
+            const ul = details.querySelector('.services__item-list');
+
+            const wrapper = document.createElement('div');
+            wrapper.style.overflow = 'hidden';
+            ul.parentNode.insertBefore(wrapper, ul);
+            wrapper.appendChild(ul);
+
+            summary.addEventListener('click', e => {
+                e.preventDefault();
+
+                if (!details.open) {
+                    details.open = true;
+                    const top = details.getBoundingClientRect().top + window.scrollY - 90 - 16;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                    wrapper.animate(
+                        [{ maxHeight: '0px' }, { maxHeight: wrapper.scrollHeight + 'px' }],
+                        { duration: 350, easing: 'ease' }
+                    );
+                } else {
+                    const anim = wrapper.animate(
+                        [{ maxHeight: wrapper.scrollHeight + 'px' }, { maxHeight: '0px' }],
+                        { duration: 350, easing: 'ease', fill: 'forwards' }
+                    );
+                    anim.onfinish = () => {
+                        details.open = false;
+                        anim.cancel();
+                    };
+                }
+            });
+        });
+    </script>
+</body>
