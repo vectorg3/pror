@@ -18,7 +18,7 @@
             <nav class="header__nav flex flex-align-center">
                 <a class="header__nav__item" href="#products">Продукты</a>
                 <a class="header__nav__item" href="#services">Услуги</a>
-                <a class="header__nav__item" href="#search">Поиск</a>
+                <a class="header__nav__item" href="#" id="openSearchNav">Поиск</a>
                 <a class="header__nav__item" href="#" id="openModalNav">Написать нам</a>
                 <a class="header__nav__item" href="#about">О компании</a>
             </nav>
@@ -218,6 +218,19 @@
         </div>
     </div>
 
+    <div class="search-modal" id="searchModal" role="dialog" aria-modal="true" aria-labelledby="searchModalTitle" hidden>
+        <div class="search-modal__overlay" id="searchModalOverlay"></div>
+        <div class="search-modal__window">
+            <button class="search-modal__close" id="closeSearchModal" aria-label="Закрыть">&times;</button>
+            <h2 class="search-modal__title" id="searchModalTitle">Поиск по сайту</h2>
+            <form class="search-modal__form" id="searchForm">
+                <input type="text" class="search-modal__input" id="searchInput" placeholder="Введите запрос..." autocomplete="off">
+                <button type="submit" class="search-modal__button">Найти</button>
+            </form>
+            <p class="search-modal__result" id="searchResult"></p>
+        </div>
+    </div>
+
     <script>
         const modal = document.getElementById('modal');
         const openBtn = document.getElementById('openModal');
@@ -259,6 +272,99 @@
         closeBtn.addEventListener('click', closeModal);
         overlay.addEventListener('click', closeModal);
         document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+        const searchModal = document.getElementById('searchModal');
+        const searchModalOverlay = document.getElementById('searchModalOverlay');
+        const closeSearchBtn = document.getElementById('closeSearchModal');
+        const searchForm = document.getElementById('searchForm');
+        const searchInput = document.getElementById('searchInput');
+        const searchResult = document.getElementById('searchResult');
+
+        const openSearchModal = () => {
+            searchModal.hidden = false;
+            searchInput.focus();
+        };
+        const closeSearchModal = () => { searchModal.hidden = true; };
+
+        document.getElementById('openSearchNav').addEventListener('click', (e) => { e.preventDefault(); openSearchModal(); });
+        closeSearchBtn.addEventListener('click', closeSearchModal);
+        searchModalOverlay.addEventListener('click', closeSearchModal);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSearchModal(); });
+
+        const clearHighlights = () => {
+            document.querySelectorAll('mark.search-highlight').forEach(mark => {
+                const parent = mark.parentNode;
+                parent.replaceChild(document.createTextNode(mark.textContent), mark);
+                parent.normalize();
+            });
+        };
+
+        const escapeRegExp = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+        const highlightMatches = (query) => {
+            clearHighlights();
+
+            if (!query.trim()) {
+                searchResult.textContent = '';
+                return;
+            }
+
+            const pattern = escapeRegExp(query);
+            const testRegex = new RegExp(pattern, 'i');
+            const regex = new RegExp(pattern, 'gi');
+            const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+                acceptNode(node) {
+                    const tag = node.parentElement ? node.parentElement.tagName : '';
+                    if (tag === 'SCRIPT' || tag === 'STYLE' || node.parentElement.closest('.search-modal')) {
+                        return NodeFilter.FILTER_REJECT;
+                    }
+                    return testRegex.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
+                }
+            });
+
+            const nodesToWrap = [];
+            let node;
+            while ((node = walker.nextNode())) nodesToWrap.push(node);
+
+            let matchCount = 0;
+            let firstMark = null;
+
+            nodesToWrap.forEach(textNode => {
+                const text = textNode.nodeValue;
+                regex.lastIndex = 0;
+                const fragment = document.createDocumentFragment();
+                let lastIndex = 0;
+                let match;
+
+                while ((match = regex.exec(text))) {
+                    matchCount++;
+                    fragment.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+                    const mark = document.createElement('mark');
+                    mark.className = 'search-highlight';
+                    mark.textContent = match[0];
+                    fragment.appendChild(mark);
+                    if (!firstMark) firstMark = mark;
+                    lastIndex = match.index + match[0].length;
+                    if (match.index === regex.lastIndex) regex.lastIndex++;
+                }
+                fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+                textNode.parentNode.replaceChild(fragment, textNode);
+            });
+
+            searchResult.textContent = matchCount > 0
+                ? `Найдено совпадений: ${matchCount}`
+                : 'Совпадений не найдено';
+
+            if (firstMark) {
+                closeSearchModal();
+                firstMark.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        };
+
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            highlightMatches(searchInput.value);
+        });
 
         const serviceItems = Array.from(document.querySelectorAll('.services__item')).map(details => {
             const summary = details.querySelector('.services__item-title');
