@@ -494,7 +494,6 @@ p {
     font-size: 13px;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.45);
-    text-transform: uppercase;
     letter-spacing: 0.06em;
     flex-shrink: 0;
 }
